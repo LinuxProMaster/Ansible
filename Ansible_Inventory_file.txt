@@ -1,0 +1,12 @@
+Создадим группу наших хостов. Допустим:
+
+[staging_servers]
+linux1	ansible_host=1.1.1.1 ansible_user=user ansible_password=user ( тут может быть два значения. Зависят они от того, как мы подключаемся к клиентам. При использовании этого, требуется установить на Ansible master sshpass)
+                                               ansible_ssh_private_key_file=путь к нашему файлу
+linux2 ansible_host=2.2.2.2 ansible_user=user ansible_ssh_private_key_file=/home/user/.ssh/id_rsa
+
+[web_servers]
+
+linux3 ansible_host=3.3.3.3 ansible_user=user ansible_password=user 
+
+и т.д

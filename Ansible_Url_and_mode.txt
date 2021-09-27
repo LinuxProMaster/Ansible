@@ -1,0 +1,12 @@
+---
+- name: Url Ansible
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - get_url:
+ 	url: httpsL//lalalapppaa-{{ ansible_system }}-{{ ansible_user }}
+	dest: /home./user
+        group: docker
+        mode: 0777

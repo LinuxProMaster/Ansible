@@ -1,0 +1,33 @@
+---
+
+- name: Debug, vars (переменные), register (Вывод нашего tasks на Ansible Master)
+  hosts: all
+  become: yes ( запуск от sudo)
+
+  vars:
+   myfirstmessage: Thanks!
+
+  tasks:
+  - name: Vars Tasks
+    debug:
+      var: myfirstmessage
+
+
+При запуске данного playbook нам на экран будет произведён вывод нашей переменной vars.
+
+
+New playbook. Register.
+
+---
+ 
+- name: New register playbook
+  hosts: all
+  become: yes
+  
+  tasks: 
+  - name: register playbook
+    shell: ls /etc
+    register: results
+   
+  - debug: 
+      var: results

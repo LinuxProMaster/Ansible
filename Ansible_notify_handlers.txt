@@ -1,0 +1,26 @@
+---
+- name: Notify handlers
+  hosts: all
+  become: yes
+  
+  vars:
+    srs: /etc/index.html
+    dest: /var/www/html
+  
+  tasks: 
+  - apt: name=nginx state=latest
+  
+  - copy: src={{srs}} dest={{dest}} mode=0777
+    notify: Restart nginx
+   
+  - service: name=nginx state=started enabled=yes
+  
+  handlers:
+  - name: Restart nginx
+    service: name=nginx state=restarted
+
+Т.е мы устанавливаем nginx на наш клиент
+после копируем наш html файл туда и стартуем nginx
+
+А компанентами notify и handlers мы говорим нашему клиенту,
+чтобы он в последнюю очередь сделал рестарт нашего nginx

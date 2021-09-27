@@ -1,0 +1,35 @@
+---
+- name: Notify handlers
+  hosts: all
+  become: yes
+  
+  vars:
+    srs: /etc/index.html
+    dest: /var/www/html
+  
+  tasks: 
+  - apt: name=nginx state=latest
+  
+  - copy: src={{srs}}/item dest={{dest}} mode=0777
+    loop:
+       - "gg.wp"
+       - "secret"
+       - "fact"
+
+item = Это наши loops, т.е данным playbook мы копируем все файлы, перечисленные в loop
+
+Ещё один пример loop, только уже установка необходимых компанентов
+
+---
+- name: Installeted with looop
+  hosts: all
+  become: yes
+  
+  tasks: 
+  - name: Installeted
+    apt: name={{item}} state=latest
+    loop: 
+       - "nginx"
+       - "vim"
+       - "apache2"
+

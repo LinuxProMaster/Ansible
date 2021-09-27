@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: Add deployer user and add it to Sudo
+    user: name=user3 groups=sudo  shell=/bin/bash  createhome=yes password=user3
+
+  - name: Set up authorized keys for the deployer user
+    authorized_key: user=user3 key="{{item}}"
+    with_file:
+      - /home/emxtion/.ssh/id_rsa.pub
