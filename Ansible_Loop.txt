@@ -16,9 +16,6 @@
        - "secret"
        - "fact"
 
-item = Это наши loops, т.е данным playbook мы копируем все файлы, перечисленные в loop
-
-Ещё один пример loop, только уже установка необходимых компанентов
 
 ---
 - name: Installeted with looop
