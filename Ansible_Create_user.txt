@@ -1,16 +1,21 @@
-- hosts: all
+---
+- name: create-user
+  hosts: all
   become: yes
 
   tasks:
-  - name: Add deployer user and add it to Sudo
-    user:
-      name: user1
-      groups: sudo
-      shell: /bin/bash
-      createhome: yes
-      password: "{{ 'user1' | password_hash('sha512') }}"
-      update_password: on_create
-
+          - name: Create a login user
+            user:
+                    name: user2
+                    password: "{{ 'user2' | password_hash('sha512')}}"
+                    groups:
+                            - sudo
+                    state: present
+                    shell: /bin/bash
+                    system: no
+                    createhome: yes
+                    home: /home/ansuser
+                    
   - name: Set up authorized keys for the deployer user
     authorized_key: user=user3 key="{{item}}"
     with_file:
