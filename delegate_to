@@ -1,0 +1,12 @@
+---
+- name: delegate
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: install apache2
+      apt:
+        name: apache2
+        state: latest
+      delegate_to linux1 #Данный таск выполниться только на машине linux1
+      
