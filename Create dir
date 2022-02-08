@@ -1,0 +1,5 @@
+- name: Create folder
+  file:
+    path: /home/user/folder1 
+    state: directory
+    mode: 0777
