@@ -1,0 +1,7 @@
+ansible-vault create playbook.yaml #Создаём манифест файл с паролем
+ansible-vault view playbook.yaml #просмотр содержимого
+ansible-vault edit playbook.yaml #редактирование секретного файла
+ansible-vault encrypt playbook.yaml #зашифровать уже существующий файл
+ansible-vault descrypt playbook.yaml #расшифровать уже существующий файл
+ansible-playbook playbook.yaml --ask-vault-pass #запуск зашифрованного плейбука
+
