@@ -1,0 +1,13 @@
+name: Git-test
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  my_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Print Hello Message
+      run: echo "Hello world"
