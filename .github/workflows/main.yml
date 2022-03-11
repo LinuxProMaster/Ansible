@@ -1,5 +1,7 @@
 name: Git-test
-
+env:
+  NEW_NAME: "FirstTest"
+  
 on:
   push:
     branches:
@@ -10,4 +12,4 @@ jobs:
     
     steps:
     - name: Print Hello Message
-      run: echo "Hello world"
+      run: echo "My env is ${{ env.NEW_NAME }}"
