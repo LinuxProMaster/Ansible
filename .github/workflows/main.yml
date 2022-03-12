@@ -19,3 +19,5 @@ jobs:
       
     - name: List
       run: ls -al
+    - name: Second echo
+      run: echo "Hello world"
