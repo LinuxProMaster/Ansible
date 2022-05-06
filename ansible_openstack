@@ -1,0 +1,18 @@
+- name: Test
+  hosts: localhost
+  tasks:
+          - name: Instance
+            os_server:
+                    state: present
+                    cloud: devstack-admin
+                    name: test
+                    image: Debian
+                    key_name: clou
+                    timeout: 200
+                    flavor: k3s
+                    auto_ip: yes
+                    security_groups:
+                            - default
+                    nics:
+                            - net-id: 9085d98f-b849-4b60-a48b-a44a2036510a
+            register: test
