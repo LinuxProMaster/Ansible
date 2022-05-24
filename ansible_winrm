@@ -1,0 +1,18 @@
+---
+- name: Create user
+  hosts: all
+  vars_prompt:
+          - name: username
+            prompt: "Enter username: "
+            private: no
+          - name: password
+            prompt: "Enter password: "
+            private: no
+          - name: groups
+            prompt: "Enter group: "
+            private: no
+  tasks:
+          - name: Create user
+            win_user:
+                    name: "{{ username }}"
+                    password: "{{ password }}"
