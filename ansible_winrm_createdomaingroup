@@ -1,0 +1,15 @@
+---
+- name: Add user to group
+  hosts: windows
+  vars_prompt:
+          - name: group
+            prompt: "Enter group: "
+            private: no
+          - name: member
+            prompt: "Enter member: "
+            private: no
+  tasks:
+          - name: Add user to group
+            win_domain_group_membership:
+                    name: "{{ group }}"
+                    members: "{{ member }}"
